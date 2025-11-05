@@ -9,7 +9,7 @@ discountPercent NUMERIC(5,2),
 availableQuantity INTEGER,
 discountedSellingPrice NUMERIC(8,2),
 weightInGms INTEGER,
-outOfStock BOOLEAN,	
+outOfStock VARCHAR(10),
 quantity INTEGER
 );
 
@@ -131,4 +131,5 @@ SELECT category,
 SUM(weightInGms * availableQuantity) AS total_weight
 FROM zepto
 GROUP BY category
+
 ORDER BY total_weight;
