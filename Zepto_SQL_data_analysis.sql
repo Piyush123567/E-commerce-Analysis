@@ -1,3 +1,5 @@
+create database project;
+use project;
 drop table if exists zepto;
 
 create table zepto (
@@ -13,7 +15,15 @@ outOfStock VARCHAR(10),
 quantity INTEGER
 );
 
---data exploration
+-- Load the dataset in MySQL
+LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/zepto_v2.csv'
+INTO TABLE zepto
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(category, name, mrp, discountPercent, availableQuantity, discountedSellingPrice, weightInGms, outOfStock, quantity);
 
 --count of rows
 select count(*) from zepto;
@@ -133,3 +143,4 @@ FROM zepto
 GROUP BY category
 
 ORDER BY total_weight;
+
